@@ -1,0 +1,13 @@
+[core]
+	editor = vim
+[user]
+	email = george.kouros.ece@gmail.com
+	name = George Kouros
+[color]
+  ui=true
+[log]
+  decorate=full
+[push]
+  default=tracking
+[alias]
+  tree = log --oneline --graph
