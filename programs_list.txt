@@ -1,0 +1,41 @@
+terminator
+numlockx
+vim vim-python-jedi
+gitg
+chromium-browser
+nautilus-dropbox
+cheese
+unity-tweak-tool
+nautilus-admin
+nautilus-open-terminal
+gufw
+bleachbit
+flashplugin-installer
+icedtea-8-plugin
+openjdk-8-jre
+texlive-full
+texmaker
+gftp
+mupdf
+vlc
+laptop-mode-tools
+skype
+teamviewer
+pulseaudio
+okular
+inkscape
+gimp
+blender
+kdenlive
+recordmydesktop
+indicator-weather
+indicator-multiload
+indicator-cpufreq
+psensor
+ubuntu-restricted-extras
+ffmpeg gxine libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav
+htop
+exuberant-ctags
+cmake
+python-dev python3-dev ipython-notebook
+libboost-all-dev

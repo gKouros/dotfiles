@@ -103,6 +103,7 @@ set mouse=v                                           " enable mouse in terminal
 set textwidth=0
 set formatoptions-=t
 set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list chars
+set backspace=indent,eol,start
 
 highlight ExtraWhitespace ctermbg=red
 " autocmd BufEnter * EnableWhitespace
@@ -193,6 +194,7 @@ let NERDTreeMinimalUI=1                         " Remove excess information bars
 let NERDTreeShowBookmarks=1                                     " Show Bookmarks
 "}}}
 " YouCompleteMe {{{
+let g:ycm_python_binary_path = 'python'
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_complete_in_comments_and_strings  = 1
@@ -201,7 +203,7 @@ let g:ycm_key_list_select_completion=['<tab>']
 let g:ycm_key_list_previous_completion=['<s-tab>']
 let g:ycm_auto_trigger = 1
 let g:ycm_confirm_extra_conf = 0 "Don't ask for confirmation every time
-" let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers = {
 \   'roslaunch' : ['="', '$(', '/'],
 \   'rosmsg,rossrv,rosaction' : ['re!^', '/'],

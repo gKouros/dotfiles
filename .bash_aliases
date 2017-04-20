@@ -26,14 +26,14 @@ alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
 alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 
 # catkin workspace, git and ros
-alias ws="cd /home/gkouros/pandora_ws"
+alias ws="cd /home/gkouros/catkin_ws"
 alias gws="source ~/gkouros_ws/devel/setup.bash && cd ~/gkouros_ws"
-alias repos="cd ~/pandora_ws/src"
+alias repos="cd ~/catkin_ws/src"
 alias cmo="catkin_make --only-pkg-with-deps"
 alias cmr="catkin_make -DCATKIN_WHITELIST_PACKAGES="""
 alias gits="git status"
 alias git-pull-all="ls | parallel git -C {} pull"
-alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -r'
+alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 
 # tar/untar aliases
 alias tar-gz='tar czf'
@@ -55,10 +55,10 @@ alias fws2="roslaunch four_wheel_steer_teleop teleop.launch"
 alias jk="roslaunch ackermann_drive_teleop ackermann_drive_joyop.launch"
 alias pk="rosrun pandora_teleop keyop.py 0.5 0.7 /cmd_vel"
 alias pj="rosrun pandora_teleop joyop.py"
-alias gui="/home/gkouros/pandora_ws/src/dashboard/gui"
+alias gui="/home/gkouros/catkin_ws/src/dashboard/gui"
 alias sm="rosrun state_manager state_changer"
 alias viz="roslaunch pandora_runtime_visualization visualization.launch"
-alias dashboard="cd ~/pandora_ws/src/dashboard"
+alias dashboard="cd ~/catkin_ws/src/dashboard"
 alias face-detector="rosrun viola_jones face_detector.py"
 alias save-params="rosrun dynamic_reconfigure dynparam dump /move_base ~/Desktop/move_base_params.yaml"
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
