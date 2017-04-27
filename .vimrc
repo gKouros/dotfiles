@@ -110,8 +110,8 @@ set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list char
 set backspace=indent,eol,start
 
 highlight ExtraWhitespace ctermbg=red
-" autocmd BufEnter * EnableWhitespace
-if &ft =~ 'markdown'
+autocmd BufEnter * EnableWhitespace
+if &filetype =~ 'markdown'
   autocmd BufEnter * EnableStripWhitespaceOnSave
 endif
 
@@ -129,7 +129,8 @@ autocmd BufRead,BufNewFile *.tex setlocal spell
 " Filetypes {{{
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 autocmd BufNewFile,BufReadPost *.launch,*.urdf,*.xacro,*.sdf set filetype=xml
-" autocmd BufNewFile,BufRead,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufRead,BufReadPost *.md set filetype=markdown
+" autocmd BufNewFile,BufRead,BufReadPost *.markdown,*.mdown,*.mkd,*.mkdn,README.md  setf markdown
 " }}}
 " Searching {{{
 set incsearch                                 " search as characters are entered
