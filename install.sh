@@ -75,5 +75,5 @@ rosdep update
 rosdep update
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 mkdir ~/catkin_ws
-ln -s /media/gkouros/STORAGE/repos ~/catkin_ws/src
+ln -s ~/Dropbox/catkin_ws_src ~/catkin_ws/src
 cd ~/catkin_ws/src && rosdep install --from-paths-src --ignore src
