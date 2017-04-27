@@ -1,3 +1,4 @@
+vivacious-colors
 terminator
 numlockx
 vim vim-python-jedi

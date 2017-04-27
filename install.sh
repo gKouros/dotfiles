@@ -32,6 +32,8 @@ vim +PluginInstall +qall
 
 # add ppas for my weather indicator widget
 sudo add-apt-repository ppa:atareao/atareao
+# add ppas for vivacious gtk themes
+sudo add-apt-repository ppa:ravefinity-project/ppa
 
 # install programs from file
 sudo apt-get update

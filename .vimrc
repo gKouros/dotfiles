@@ -31,6 +31,10 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'lervag/vimtex'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 " }}}
 " Colors and Themes {{{
@@ -116,6 +120,12 @@ let g:indentLine_color_term=239
 let g:indentLine_enabled=1
 let g:indentLine_leadingSpaceEnabled=1
 " }}}
+" Spellchecking {{{
+set spelllang=en
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.tex setlocal spell
+
+" }}}
 " Filetypes {{{
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 autocmd BufNewFile,BufReadPost *.launch,*.urdf,*.xacro,*.sdf set filetype=xml
@@ -194,16 +204,18 @@ let NERDTreeMinimalUI=1                         " Remove excess information bars
 let NERDTreeShowBookmarks=1                                     " Show Bookmarks
 "}}}
 " YouCompleteMe {{{
-let g:ycm_python_binary_path = 'python'
+" let g:ycm_python_binary_path = 'python'
+let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings  = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_key_list_select_completion=['<tab>']
-let g:ycm_key_list_previous_completion=['<s-tab>']
+let g:ycm_key_list_select_completion=['<tab>', '<Down>']
+let g:ycm_key_list_previous_completion=['<s-tab>', '<Up>']
 let g:ycm_auto_trigger = 1
-let g:ycm_confirm_extra_conf = 0 "Don't ask for confirmation every time
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers = {
 \   'roslaunch' : ['="', '$(', '/'],
 \   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
@@ -223,6 +235,14 @@ let g:syntastic_cpp_check_header = 0
 let g:syntastic_c_check_header = 0
 let g:syntastic_cpp_remove_include_errors = 0
 highlight SyntasticErrorSign guifg=white guibg=red
+" }}}
+" clang-formater SETTINGS {{{
+let g:clang_format#command = "clang-format-3.6"
+let g:clang_format#code_style = "google"
+let g:clang_format#style_options = {
+      \ "ConstructorInitializerIndentWidth" : 2,
+            \ "ColumnLimit" : 100,
+            \ "BreakBeforeBraces" : "Stroustrup"}
 " }}}
 " Comments {{{
 let g:NERDSpaceDelims=1                              " leave space after comment
@@ -281,6 +301,12 @@ noremap <Up> g<Up>
 noremap <Down> g<Down>
 imap <Up> <C-o>gk
 imap <Down> <C-o>gj
+" Bind Ctrl+<movement> keys to move around the windows,
+" " instead of using Ctrl+w + <movement>
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-k> <c-w>k"
 " }}}
 " Disable Arrow keys {{{
 " Esc Mode
