@@ -21,6 +21,10 @@ alias public_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias local_ip="$(hostname -I)"
 alias delnewline="rename 's/\n/ /g' *" # delete new line char from filenames
 
+# compiler related
+alias switch-c-compiler='sudo update-alternatives --config cc'
+alias switch-cpp-compiler='sudo update-alternatives --config c++'
+
 # git related
 alias gits="git status"
 alias git-pull-all="ls | parallel git -C {} pull"
