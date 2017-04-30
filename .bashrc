@@ -151,4 +151,3 @@ export ROS_IP=$(hostname -I)
 
 # for fuzzylite
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/bin
-source /opt/ros/kinetic/setup.bash
