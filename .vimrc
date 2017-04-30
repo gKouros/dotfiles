@@ -111,7 +111,7 @@ set backspace=indent,eol,start
 
 highlight ExtraWhitespace ctermbg=red
 autocmd BufEnter * EnableWhitespace
-if &filetype =~ 'markdown'
+if &filetype !~ 'markdown'
   autocmd BufEnter * EnableStripWhitespaceOnSave
 endif
 
@@ -216,7 +216,6 @@ let g:ycm_key_list_select_completion=['<tab>', '<Down>']
 let g:ycm_key_list_previous_completion=['<s-tab>', '<Up>']
 let g:ycm_auto_trigger = 1
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers = {
 \   'roslaunch' : ['="', '$(', '/'],
 \   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
