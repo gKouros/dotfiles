@@ -76,4 +76,5 @@ rosdep update
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 mkdir ~/catkin_ws
 ln -s ~/Dropbox/catkin_ws_src ~/catkin_ws/src
+ln -s $(path)/.ycm_extra_conf.py ~/catkin_ws/src/.ycm_extra_conf.py
 cd ~/catkin_ws/src && rosdep install --from-paths-src --ignore src
