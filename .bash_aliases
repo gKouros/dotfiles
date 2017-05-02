@@ -36,6 +36,7 @@ alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
 alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
+alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
 
 # tar/untar aliases
 alias tar-gz='tar czf'
