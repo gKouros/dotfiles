@@ -34,7 +34,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'jiangmiao/auto-pairs'
+" Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 " }}}
 " Colors and Themes {{{
@@ -194,7 +194,7 @@ let NERDTreeMinimalUI=1                         " Remove excess information bars
 let NERDTreeShowBookmarks=1                                     " Show Bookmarks
 "}}}
 " YouCompleteMe {{{
-" let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = '/usr/local/lib/python2.7'
 let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -239,7 +239,7 @@ let g:NERDCompactSexyComs=0                             " enable sexy commenting
 map - <leader>ci
 " }}}
 " Startify {{{
-let g:startify_bookmarks = [ '~/.vim/vimrc', '~/.bashrc', '~/.bash_aliases' ]
+let g:startify_bookmarks = [ '~/.vim/vimrc', '~/.zshrc', '~/.aliases' ]
 let g:startify_session_detection=1     " Show current folder session file at top
 let g:startify_relative_path =1                            " Show relative paths
 let g:startify_change_to_dir=0         " Change to file's directory when opening
@@ -259,8 +259,6 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 " - source vimrc binding
 nnoremap <leader>sv :source $MYVIMRC<CR>
-" - remove whitespaces
-nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 " - toggle rainbow parentheses
 nnoremap <leader>r :RainbowParenthesesToggle<CR>
 " - toggle nerdtree

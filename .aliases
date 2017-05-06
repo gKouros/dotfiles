@@ -14,6 +14,7 @@ alias storage='cd /media/gkouros/STORAGE'
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
+alias sz="source ~/.zshrc"
 alias set-zsh="chsh -s $(which zsh)"
 alias set-bash="chsh -s $(which bash)"
 alias print-interfaces="ls /sys/class/net/"
@@ -37,6 +38,7 @@ alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
 alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+alias opencv="cd /media/gkouros/STORAGE/opencv"
 
 # tar/untar aliases
 alias tar-gz='tar czf'

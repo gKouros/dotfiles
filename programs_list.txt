@@ -1,7 +1,6 @@
 vivacious-colors
 terminator
 numlockx
-vim vim-python-jedi
 gitg
 chromium-browser
 nautilus-dropbox

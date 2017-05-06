@@ -19,10 +19,17 @@ rm -r ~/Downloads && ln -fs /media/gkouros/STORAGE/Downloads ~/Downloads
 sudo sed -i '$a\# STORAGE\nUUID=462E78EF08044B31 /media/gkouros/STORAGE ntfs-3g users,permissions,auto 0 0' /etc/fstab
 
 # install vim and plugins
-sudo apt-get install vim
-mkdir -p ~/.vim
-ln -fs $path/.vimrc ~/.vim/vimrc
-sudo ln -fs ~/.vim/vimrc /etc/vim/vimrc
+sudo apt-get install vim{,-{gtk,python-jedi,nox{,-py2}}}
+sudo apt-get install software-properties-common python-software-properties
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt-get update
+sudo apt-get install neovim python-dev python-pip python3-dev python3-pip
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+mkdir -p ~/.vim ~/.config/nvim
+ln -s $path/.vimrc ~/.vim/vimrc
+ln -s $path/init.vim ~/.config/nvim/init.vim
+sudo ln -s ~/.vim/vimrc /etc/vim/vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone git@github.com:vim-scripts/python.vim.git ~/.vim/python.vim
 git clone git@github.com:powerline/fonts.git ~/.vim/fonts
@@ -31,9 +38,9 @@ vim +PluginInstall +qall
 ~/.vim/bundle/YouCompleteMe/install.sh --clang-completer
 
 # add ppas for my weather indicator widget
-sudo add-apt-repository ppa:atareao/atareao
+sudo add-apt-repository ppa:atareao/atareao -y
 # add ppas for vivacious gtk themes
-sudo add-apt-repository ppa:ravefinity-project/ppa
+sudo add-apt-repository ppa:ravefinity-project/ppa -y
 
 # install programs from file
 sudo apt-get update
@@ -76,5 +83,5 @@ rosdep update
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 mkdir ~/catkin_ws
 ln -s ~/Dropbox/catkin_ws_src ~/catkin_ws/src
-ln -s $(path)/.ycm_extra_conf.py ~/catkin_ws/src/.ycm_extra_conf.py
+ln -s $path/.ycm_extra_conf.py ~/catkin_ws/src/.ycm_extra_conf.py
 cd ~/catkin_ws/src && rosdep install --from-paths-src --ignore src
