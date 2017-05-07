@@ -27,6 +27,6 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}%{● %G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{ %G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔ %G%}"
 
-PROMPT="╭─${user_host} ${current_dir} ${git_branch}
-╰─%B${user_symbol}%b "
+PROMPT="$fg[yellow]╭─$reset_color${user_host} ${current_dir} ${git_branch}
+$fg[yellow]╰─%B${user_symbol}$reset_color%b "
 RPROMPT=""
