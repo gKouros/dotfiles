@@ -21,6 +21,10 @@ alias print-interfaces="ls /sys/class/net/"
 alias public_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias local_ip="$(hostname -I)"
 alias delnewline="rename 's/\n/ /g' *" # delete new line char from filenames
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias ll="ls -lah"
+alias grep='grep --color=auto'
 
 # compiler related
 alias switch-c-compiler='sudo update-alternatives --config cc'

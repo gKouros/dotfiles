@@ -1,12 +1,15 @@
 #!/bin/sh
 
-path=$(pwd)
+dpath=$(pwd)
 
 # link dotfiles
-ln -fs $path/.bashrc ~/.bashrc
-ln -fs $path/.bash_aliases ~/.bash_aliases
-ln -fs $path/.bash_scripts ~/.bash_scripts
-sudo apt-get install git && ln -fs $path/.gitconfig ~/.gitconfig
+ln -fs $dpath/.bashrc ~/.bashrc
+ln -fs $dpath/.bash_aliases ~/.bash_aliases
+ln -fs $dpath/.bash_scripts ~/.bash_scripts
+sudo apt-get install git && ln -fs $dpath/.gitconfig ~/.gitconfig
+
+# install zsh
+sh $dpath/zsh_installer.sh
 
 # link main dirs to storage drive ones
 rm -r ~/Desktop && ln -fs /media/gkouros/STORAGE/Desktop ~/Desktop
@@ -27,8 +30,8 @@ sudo apt-get install neovim python-dev python-pip python3-dev python3-pip
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
 mkdir -p ~/.vim ~/.config/nvim
-ln -s $path/.vimrc ~/.vim/vimrc
-ln -s $path/init.vim ~/.config/nvim/init.vim
+ln -s $dpath/.vimrc ~/.vim/vimrc
+ln -s $dpath/init.vim ~/.config/nvim/init.vim
 sudo ln -s ~/.vim/vimrc /etc/vim/vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone git@github.com:vim-scripts/python.vim.git ~/.vim/python.vim
@@ -83,5 +86,5 @@ rosdep update
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 mkdir ~/catkin_ws
 ln -s ~/Dropbox/catkin_ws_src ~/catkin_ws/src
-ln -s $path/.ycm_extra_conf.py ~/catkin_ws/src/.ycm_extra_conf.py
+ln -s $dpath/.ycm_extra_conf.py ~/catkin_ws/src/.ycm_extra_conf.py
 cd ~/catkin_ws/src && rosdep install --from-paths-src --ignore src

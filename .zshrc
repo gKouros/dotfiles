@@ -2,22 +2,21 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH_CUSTOM=~/.oh-my-zsh/custom
-# source $ZSH_CUSTOM/plugins/schroot-prompt/schroot_plugin.zsh
-
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="bira"
+ZSH_THEME="my_zsh_theme"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -32,10 +31,10 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -45,7 +44,7 @@ ZSH_THEME="agnoster"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd/mm/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -54,11 +53,20 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
-# autoload -U compinit && compinit
+plugins=(git zsh-autosuggestions zsh-history-substring-search)
+
+# enable syntax highligting only when opening new window to prevent crashing
+if [[ $ZSH_EVAL_CONTEXT == 'file' ]]; then
+  source "$ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# ZSH_THEME_GIT_PROMPT_PREFIX="["
+# ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+# ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+# ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -82,19 +90,14 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -lah"
-
 source ~/.aliases
 source ~/.misc_aliases
 
-setopt nonomatch
+# enable wildcards
+setopt nonomatch;
 
 # ros related
 source /opt/ros/kinetic/setup.zsh
 source ~/catkin_ws/devel/setup.zsh
-export ROS_WORKSPACE=~/catkin_ws
 export ROS_IP=$(hostname -I)
+export ROS_WORKSPACE=~/catkin_ws
