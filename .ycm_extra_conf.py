@@ -81,7 +81,7 @@ default_flags = [
     '-I',
     '.',
     '-I',
-    './include',
+    './inlude',
 
     # include third party libraries
     #  '-isystem',
@@ -250,6 +250,6 @@ def FlagsForFile(filename):
         final_flags = MakeRelativePathsInFlagsAbsolute(flags, relative_to)
 
     return {
-        'flags': final_flags,
+        'flags': flags,
         'do_cache': True
     }
