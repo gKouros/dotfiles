@@ -34,7 +34,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-" Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 " }}}
 " Colors and Themes {{{
@@ -274,6 +273,7 @@ nnoremap <leader>t <ESC>:TlistToggle<CR>
 nnoremap <leader>s <ESC>:SyntasticCheck<CR>
 " - run python script
 nnoremap <buffer> <F9> :exec '!python -B' shellescape(@%, 1)<cr>
+
 " }}}
 " Custom Movements {{{
 " - move to beginning/end of line
