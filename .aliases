@@ -52,3 +52,6 @@ alias untar-bz2='tar xjf'
 
 # copy public key to remote machine eg. keyto example@example-ip
 alias keyto='ssh-copy-id'
+
+# format a file using roscpp guidelines and using clang
+alias cpp_format='clang-format-3.8 -i -style=file'
