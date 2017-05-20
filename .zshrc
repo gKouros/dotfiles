@@ -53,25 +53,22 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-history-substring-search)
+plugins=(git bundler zsh-autosuggestions zsh-history-substring-search)
 
 # enable syntax highligting only when opening new window to prevent crashing
 if [[ $ZSH_EVAL_CONTEXT == 'file' ]]; then
   source "$ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-# ZSH_THEME_GIT_PROMPT_PREFIX="["
-# ZSH_THEME_GIT_PROMPT_SUFFIX="]"
-# ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
-# ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -96,8 +93,11 @@ source ~/.misc_aliases
 # enable wildcards
 setopt nonomatch;
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
+
 # ros related
 source /opt/ros/kinetic/setup.zsh
 source ~/catkin_ws/devel/setup.zsh
+# source ~/pandora_ws/devel/setup.zsh --extend
 export ROS_IP=$(hostname -I)
 export ROS_WORKSPACE=~/catkin_ws
