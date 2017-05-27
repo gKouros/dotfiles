@@ -16,4 +16,4 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 git clone https://github.com/zsh-users/zsh-history-substring-search.git $ZSH_CUSTOM/plugins/zsh-history-substring-search
 
 ln -s $dpath/.zshrc ~/.zshrc
-ln -s $dpath/my_zsh_theme.zsh-theme $ZSH/themes/my_zsh_theme.zsh-theme
+ln -s $dpath/my.zsh-theme $ZSH/themes/my_zsh_theme.zsh-theme
