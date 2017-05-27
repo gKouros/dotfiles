@@ -6,34 +6,28 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'universal-ctags/ctags'
-Plugin 'vim-scripts/Gundo'
 Plugin 'vim-scripts/indentLine.vim'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/Rainbow-Parenthesis'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'ervandew/supertab'
-Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'              " eg. select lines and do :Tabularize /=
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/UltiSnips'
+Plugin 'vim-scripts/UltiSnips'           " custom autocompletion eg. if, for etc
+Plugin 'honza/vim-snippets'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/fugitive.vim'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'taketwo/vim-ros'
 Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mhinz/vim-startify'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'lervag/vimtex'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rhysd/vim-clang-format'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
 call vundle#end()
 " }}}
 " Colors and Themes {{{
@@ -43,6 +37,7 @@ syntax enable                                         " enable syntax processing
 " - highlight line number column
 highlight Comment ctermfg=66
 let &colorcolumn=81                                            " color column 81
+autocmd FileType c,cpp :set colorcolumn=121
 highlight colorcolumn ctermfg=red ctermbg=black
 " }}}
 " rainbow parenthesis {{{
@@ -167,8 +162,13 @@ function! ToggleNumber()
     endif
 endfunc
 " }}}
-" Directories {{{
+" Ultisnips {{{
 let g:UltiSnipsSnippetsDirectories=["UltiSnipps", "my_snippets"]
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:Ultisnips_python_style="doxygen"
+let g:UltiSnipsListSnippets="<c-b>"
 "}}}
 " Statusline {{{
 let g:airline_powerline_fonts=1
