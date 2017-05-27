@@ -93,7 +93,7 @@ source ~/.misc_aliases
 # enable wildcards
 setopt nonomatch;
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # ros related
 source /opt/ros/kinetic/setup.zsh
