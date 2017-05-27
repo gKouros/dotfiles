@@ -6,13 +6,12 @@ if [[ $UID -eq 0 ]]; then
     local user_host='%{$terminfo[bold]$fg[red]%}%n$fg[cyan]@$fg[magenta]%m%{$reset_color%}'
     local user_symbol='#'
 else
-    local user_host='%{$terminfo[bold]$fg[cyan]%}%n$fg[red]@$fg[magenta]%m%{$reset_color%}'
+    local user_host='%{$terminfo[bold]$fg[cyan]%}%n%{$fg[red]%}@%{$fg[magenta]%}%m%{$reset_color%}'
     local user_symbol='$'
 fi
 
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
-# local git_branch='$(git_prompt_info)%{$reset_color%}'
 local git_branch='$(git_super_status)%{$reset_color%}'
 
 local rvm_ruby=''
@@ -38,6 +37,6 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}%{● %G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{ %G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔ %G%}"
 
-PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
-╰─%B${user_symbol}%b "
+PROMPT="%{$fg[yellow]%}╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
+%{$fg[yellow]%}╰─%{$reset_colors%}%B${user_symbol}%b "
 RPS1=""
