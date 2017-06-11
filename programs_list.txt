@@ -1,5 +1,7 @@
-vivacious-colors
+numix-gtk-theme
 terminator
+unity-tweak-tool
+gnome-tweak-tool
 numlockx
 gitg
 chromium-browser

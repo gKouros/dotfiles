@@ -1,7 +1,10 @@
 #!/bin/bash
 ZSH=~/.oh_my_zsh
-ZSH_CUSTOM=~/.oh-my-zsh/custom
+ZSH_CUSTOM=~/.oh_my_zsh/custom
 dpath=$(pwd)
+
+# install zsh
+sudo apt install zsh
 
 # Install oh_my_zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -15,5 +18,5 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 # Install zsh_history_substring_search
 git clone https://github.com/zsh-users/zsh-history-substring-search.git $ZSH_CUSTOM/plugins/zsh-history-substring-search
 
-ln -s $dpath/.zshrc ~/.zshrc
+rm ~/.zshrc && ln -s $dpath/.zshrc ~/.zshrc
 ln -s $dpath/my.zsh-theme $ZSH/themes/my_zsh_theme.zsh-theme
