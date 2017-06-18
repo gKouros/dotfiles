@@ -20,3 +20,10 @@ extract () {
    fi
  }
 
+bak() {
+    mv $1 $1.bak
+}
+
+ubak() {
+    mv -- "$1" "${1%.bak}"
+}

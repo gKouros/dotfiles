@@ -89,6 +89,7 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 source ~/.aliases
 source ~/.misc_aliases
+source ~/.bash_scripts
 
 # enable wildcards
 setopt nonomatch;
@@ -98,6 +99,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 # ros related
 source /opt/ros/kinetic/setup.zsh
 source ~/catkin_ws/devel/setup.zsh
-# source ~/pandora_ws/devel/setup.zsh --extend
 export ROS_IP=$(hostname -I)
 export ROS_WORKSPACE=~/catkin_ws
