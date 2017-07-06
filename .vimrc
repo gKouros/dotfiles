@@ -104,7 +104,7 @@ set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list char
 set backspace=indent,eol,start
 
 highlight ExtraWhitespace ctermbg=red
-autocmd BufEnter * EnableWhitespace
+" autocmd BufEnter * EnableWhitespace
 if &filetype !~ 'markdown'
   autocmd BufEnter * EnableStripWhitespaceOnSave
 endif
@@ -252,6 +252,8 @@ let g:startify_list_order = [
       \ ]
 " }}}
 " Custom bindings {{{
+" - replace character and exit insert mode
+nnoremap <C-I> s <ESC>r
 " - gui undo binding
 nnoremap <leader>u :GundoToggle<CR>
 " - edit vimrc binding

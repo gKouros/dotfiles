@@ -1,6 +1,6 @@
 #!/bin/bash
-ZSH=~/.oh_my_zsh
-ZSH_CUSTOM=~/.oh_my_zsh/custom
+ZSH=~/.oh-my-zsh
+ZSH_CUSTOM=~/.oh-my-zsh/custom
 dpath=$(pwd)
 
 # install zsh
