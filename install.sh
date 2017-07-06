@@ -24,13 +24,6 @@ sudo sed -i '$a\# STORAGE\nUUID=462E78EF08044B31 /media/gkouros/STORAGE ntfs-3g 
 # install vim and plugins
 sudo apt install vim-gnome-py2
 sudo apt install software-properties-common python-software-properties
-#sudo add-apt-repository ppa:neovim-ppa/stable -y
-#sudo apt update
-#sudo apt install neovim python-dev python-pip python3-dev python3-pip
-#sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-#sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-#mkdir -p ~/.vim ~/.config/nvim
-#ln -s $dpath/init.vim ~/.config/nvim/init.vim
 ln -s $dpath/.vimrc ~/.vim/vimrc
 sudo ln -s ~/.vim/vimrc /etc/vim/vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
