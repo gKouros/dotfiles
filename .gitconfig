@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+	excludesfile = /home/gkouros/.gitignore_global
 [user]
 	email = george.kouros.ece@gmail.com
 	name = George Kouros
@@ -11,3 +12,4 @@
   default=tracking
 [alias]
   tree = log --oneline --graph
+
