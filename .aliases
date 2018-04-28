@@ -25,6 +25,8 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias grep='grep --color=auto'
+alias nh='nautilus'
+alias clearswap='sudo swapoff -a && sudo swapon'
 
 # compiler related
 alias switch-c-compiler='sudo update-alternatives --config cc'
@@ -37,12 +39,12 @@ alias git-pull-all="ls | parallel git -C {} pull"
 # catkin workspace and ros
 alias ws="cd ~/catkin_ws"
 alias repos="cd ~/catkin_ws/src"
+alias ncrepos="cd ~/non_catkin_ws"
 alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
 alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
 alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-alias opencv="cd /media/gkouros/STORAGE/opencv"
 
 # tar/untar aliases
 alias tar-gz='tar czf'
@@ -55,3 +57,8 @@ alias keyto='ssh-copy-id'
 
 # format a file using roscpp guidelines and using clang
 alias cpp_format='clang-format-3.8 -i -style=file'
+
+gamma(){xrandr --output eDP-1-1 --gamma $1:$1:$1}
+
+# export svg to latex
+pdf2tex(){inkscape -D -z --file=$1 --export-pdf=$1.pdf --export-latex}

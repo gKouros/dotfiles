@@ -9,18 +9,8 @@ nautilus-dropbox
 cheese
 unity-tweak-tool
 nautilus-admin
-nautilus-open-terminal
-gufw
-bleachbit
 flashplugin-installer
-icedtea-8-plugin
-openjdk-8-jre
-texlive-full
-texmaker
-gftp
-mupdf
 vlc
-laptop-mode-tools
 skype
 teamviewer
 pulseaudio
@@ -28,7 +18,6 @@ okular
 inkscape
 gimp
 blender
-kdenlive
 recordmydesktop
 indicator-weather
 indicator-multiload

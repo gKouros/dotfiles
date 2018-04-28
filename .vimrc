@@ -104,8 +104,8 @@ set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list char
 set backspace=indent,eol,start
 
 highlight ExtraWhitespace ctermbg=red
-" autocmd BufEnter * EnableWhitespace
-if &filetype !~ 'markdown'
+autocmd BufEnter * EnableWhitespace
+if &filetype =~ 'markdown'
   autocmd BufEnter * EnableStripWhitespaceOnSave
 endif
 
@@ -184,7 +184,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Markdown {{{
 let vim_markdown_preview_github=1
 " let vim_markdown_preview_toggle=2
-let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_browser='Mozilla Firefox'
 " let vim_markdown_preview_temp_file=1
 " }}}
 " NERDTree {{{

@@ -4,7 +4,7 @@ ZSH_CUSTOM=~/.oh-my-zsh/custom
 dpath=$(pwd)
 
 # install zsh
-sudo apt install zsh
+sudo apt install zsh -y
 
 # Install oh_my_zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
