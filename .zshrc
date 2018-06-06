@@ -105,3 +105,4 @@ export ROS_IP=$(hostname -I)
 export TURTLEBOT3_MODEL=waffle
 
 # source ~/non_catkin_ws/acado/build/acado_env.sh
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib

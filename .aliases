@@ -10,7 +10,7 @@ alias apt-search='sudo aptitude search'
 alias ~='cd ~'
 alias desktop='cd ~/Desktop'
 alias downloads='cd ~/Downloads'
-alias storage='cd /media/gkouros/STORAGE'
+alias storage='cd /media/gkouros/STORAGE2'
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
