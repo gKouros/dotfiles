@@ -8,16 +8,14 @@ alias apt-search='sudo aptitude search'
 
 # frequently used folders
 alias ~='cd ~'
-alias desktop='cd ~/Desktop'
-alias downloads='cd ~/Downloads'
-alias storage='cd /media/gkouros/STORAGE2'
+alias desk='cd ~/Desktop'
+alias down='cd ~/Downloads'
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
 alias sz="source ~/.zshrc"
 alias set-zsh="chsh -s $(which zsh)"
 alias set-bash="chsh -s $(which bash)"
-alias print-interfaces="ls /sys/class/net/"
 alias public_ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias local_ip="$(hostname -I)"
 alias delnewline="rename 's/\n/ /g' *" # delete new line char from filenames
@@ -26,7 +24,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ll="ls -lah"
 alias grep='grep --color=auto'
 alias nh='nautilus'
-alias clearswap='sudo swapoff -a && sudo swapon'
+alias clearswap='sudo swapoff -a && sudo swapon -a'
 
 # compiler related
 alias switch-c-compiler='sudo update-alternatives --config cc'
@@ -39,12 +37,13 @@ alias git-pull-all="ls | parallel git -C {} pull"
 # catkin workspace and ros
 alias ws="cd ~/catkin_ws"
 alias repos="cd ~/catkin_ws/src"
-alias ncrepos="cd ~/non_catkin_ws"
+alias ncrepos="cd ~/installers"
 alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
 alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
 alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+alias ros2="source ~/.ros2_setup.zsh"
 
 # tar/untar aliases
 alias tar-gz='tar czf'
@@ -55,10 +54,27 @@ alias untar-bz2='tar xjf'
 # copy public key to remote machine eg. keyto example@example-ip
 alias keyto='ssh-copy-id'
 
-# format a file using roscpp guidelines and using clang
-alias cpp_format='clang-format-3.8 -i -style=file'
+# Converting aliases
+ogv2mp4() {
+  ffmpeg -i $1 \
+    -c:v libx264 -preset veryslow -crf 22 \
+    -c:a libmp3lame -qscale:a 2 -ac 2 -ar 44100 \
+    ${1%.*}.mp4
+}
 
-gamma(){xrandr --output eDP-1-1 --gamma $1:$1:$1}
 
-# export svg to latex
-pdf2tex(){inkscape -D -z --file=$1 --export-pdf=$1.pdf --export-latex}
+# docker related
+# alias zed="nvidia-docker run -it --privileged stereolabs/zed:ubuntu1804-cuda10.0-zed2.7"
+#
+alias cmake_cv="cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D WITH_CUDA=ON \
+    -D ENABLE_FAST_MATH=1 \
+    -D CUDA_FAST_MATH=1 \
+    -D WITH_CUBLAS=1 \
+    -D INSTALL_PYTHON_EXAMPLES=OFF \
+    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+    -D BUILD_EXAMPLES=ON .. \
+    -DBUILD_opencv_cudacodec=OFF \
+    -DWITH_NVCUVID=OFF" \
+    -DWITH_NONFREE=ON
