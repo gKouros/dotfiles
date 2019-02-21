@@ -20,7 +20,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/fugitive.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'taketwo/vim-ros'
+" Plugin 'taketwo/vim-ros'
 Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mhinz/vim-startify'
@@ -184,7 +184,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Markdown {{{
 let vim_markdown_preview_github=1
 " let vim_markdown_preview_toggle=2
-let vim_markdown_preview_browser='Mozilla Firefox'
+let vim_markdown_preview_browser='Google Chrome'
 " let vim_markdown_preview_temp_file=1
 " }}}
 " NERDTree {{{
@@ -193,7 +193,7 @@ let NERDTreeMinimalUI=1                         " Remove excess information bars
 let NERDTreeShowBookmarks=1                                     " Show Bookmarks
 "}}}
 " YouCompleteMe {{{
-let g:ycm_python_binary_path = '/usr/local/lib/python2.7'
+let g:ycm_python_binary_path = '/usr/bin/python'
 let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
