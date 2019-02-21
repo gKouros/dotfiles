@@ -103,7 +103,7 @@ source ~/catkin_ws/devel/setup.zsh
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
 
 # ros2 related
-source /opt/ros/crystal/local_setup.zsh
+# source /opt/ros/crystal/local_setup.zsh
 
 # virtualenv and virtualenvwrapper
 # export WORKON_HOME=$HOME/.virtualenvs
