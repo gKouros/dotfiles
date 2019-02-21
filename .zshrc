@@ -88,6 +88,7 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 source ~/.aliases
+# source ~/.experiment_aliases
 # source ~/.misc_aliases
 source ~/.bash_scripts
 
@@ -97,12 +98,21 @@ setopt nonomatch;
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # ros related
-source /opt/ros/kinetic/setup.zsh
+source /opt/ros/melodic/setup.zsh
 source ~/catkin_ws/devel/setup.zsh
-# export ROS_MASTER_URI="http://192.168.0.200:11311"
-export ROS_IP=$(hostname -I)
-# export ROS_WORKSPACE=~/catkin_ws
-export TURTLEBOT3_MODEL=waffle
+export ROS_IP=$(hostname -I | cut -f1 -d' ')
 
-# source ~/non_catkin_ws/acado/build/acado_env.sh
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+# ros2 related
+source /opt/ros/crystal/local_setup.zsh
+
+# virtualenv and virtualenvwrapper
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# source /usr/local/bin/virtualenvwrapper.sh
+
+# cuda related
+# export PATH=$PATH:/usr/local/cuda-10.0/bin:$HOME/bin
+# export CUDADIR=/usr/local/cuda-10.0
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64:/usr/lib/x86_64-linux-gnu/
+
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH::usr/local/lib
