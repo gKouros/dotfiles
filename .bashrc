@@ -144,9 +144,7 @@ function proml {
 proml
 
 # ros related
-source /opt/ros/kinetic/setup.bash
+source /opt/ros/melodic/setup.bash
 source ~/catkin_ws/devel/setup.bash
 export ROS_WORKSPACE=~/catkin_ws
-export ROS_IP=$(hostname -I)
-source /opt/ros/kinetic/setup.bash
-source ~/non_catkin_ws/ACADOtoolkit/build/acado_env.sh
+export ROS_IP=$(hostname -I | cut -f1 -d' ')
