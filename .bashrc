@@ -144,7 +144,6 @@ function proml {
 proml
 
 # ros related
-source /opt/ros/melodic/setup.bash
-source ~/catkin_ws/devel/setup.bash
-export ROS_WORKSPACE=~/catkin_ws
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
+if [ ! -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
+if [ ! -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi

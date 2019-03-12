@@ -100,4 +100,3 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
 if [ ! -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
 if [ ! -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi
-if [ ! -f ~/bakaert_ws/devel/setup.bash ]; then  source ~/bakaert_ws/devel/setup.zsh --extend; fi
