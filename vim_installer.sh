@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install vim and plugins
-sudo apt-get -y install vim
+sudo apt-get -y install vim exuberant-ctags
 ln -s $(pwd)/.vimrc ~/.vim/vimrc
 sudo ln -fs ~/.vim/vimrc /etc/vim/vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
