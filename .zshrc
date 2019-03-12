@@ -60,7 +60,6 @@ if [[ $ZSH_EVAL_CONTEXT == 'file' ]]; then
   source "$ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -98,21 +97,7 @@ setopt nonomatch;
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # ros related
-source /opt/ros/melodic/setup.zsh
-source ~/catkin_ws/devel/setup.zsh
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
-
-# ros2 related
-# source /opt/ros/crystal/local_setup.zsh
-
-# virtualenv and virtualenvwrapper
-# export WORKON_HOME=$HOME/.virtualenvs
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-# source /usr/local/bin/virtualenvwrapper.sh
-
-# cuda related
-# export PATH=$PATH:/usr/local/cuda-10.0/bin:$HOME/bin
-# export CUDADIR=/usr/local/cuda-10.0
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64:/usr/lib/x86_64-linux-gnu/
-
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH::usr/local/lib
+if [ ! -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
+if [ ! -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi
+if [ ! -f ~/bakaert_ws/devel/setup.bash ]; then  source ~/bakaert_ws/devel/setup.zsh --extend; fi
