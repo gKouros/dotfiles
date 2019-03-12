@@ -1,32 +1,6 @@
-numix-gtk-theme
-terminator
-unity-tweak-tool
-gnome-tweak-tool
-numlockx
-gitg
-chromium-browser
-nautilus-dropbox
-cheese
-unity-tweak-tool
-nautilus-admin
-flashplugin-installer
-vlc
-skype
-teamviewer
-pulseaudio
-okular
-inkscape
-gimp
-blender
-recordmydesktop
-indicator-weather
-indicator-multiload
-indicator-cpufreq
-psensor
-ubuntu-restricted-extras
-ffmpeg gxine libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav
 htop
-exuberant-ctags
+terminator
+{gnome,unity}-tweak-tool
+gitk
+gitg
 cmake
-python-dev python3-dev ipython-notebook
-libboost-all-dev
