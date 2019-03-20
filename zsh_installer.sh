@@ -1,7 +1,7 @@
 #!/bin/bash
 ZSH=~/.oh-my-zsh
 ZSH_CUSTOM=~/.oh-my-zsh/custom
-dpath=$(pwd)
+DPATH=`dirname "$0"`
 
 # install zsh
 sudo apt install zsh -y
@@ -18,5 +18,5 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 # Install zsh_history_substring_search
 git clone https://github.com/zsh-users/zsh-history-substring-search.git $ZSH_CUSTOM/plugins/zsh-history-substring-search
 
-rm ~/.zshrc && ln -sf $dpath/.zshrc ~/.zshrc
-ln -sf $dpath/my.zsh-theme $ZSH/themes/my_zsh_theme.zsh-theme
+rm ~/.zshrc && ln -sf $DPATH/.zshrc ~/.zshrc
+ln -sf $DPATH/my.zsh-theme $ZSH/themes/my_zsh_theme.zsh-theme
