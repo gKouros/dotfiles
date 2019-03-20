@@ -104,10 +104,9 @@ set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list char
 set backspace=indent,eol,start
 
 highlight ExtraWhitespace ctermbg=red
-autocmd BufEnter * EnableWhitespace
-if &filetype =~ 'markdown'
-  autocmd BufEnter * EnableStripWhitespaceOnSave
-endif
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:better_whitespace_filetypes_blacklist=['markdown', 'md', 'diff', 'gitcommit', 'unite', 'qf', 'help']
 
 " - indent lines and leading spaces
 let g:indentLine_color_term=239
