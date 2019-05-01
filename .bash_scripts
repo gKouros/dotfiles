@@ -27,3 +27,34 @@ bak() {
 ubak() {
     mv -- "$1" "${1%.bak}"
 }
+
+#!/bin/sh
+
+compress_pdf(){
+gs  -q -dNOPAUSE -dBATCH -dSAFER \
+    -sDEVICE=pdfwrite \
+    -dCompatibilityLevel=1.4 \
+    -dPDFSETTINGS=/screen \
+    -dEmbedAllFonts=true \
+    -dSubsetFonts=true \
+    -dColorImageDownsampleType=/Bicubic \
+    -dColorImageResolution=140 \
+    -dGrayImageDownsampleType=/Bicubic \
+    -dGrayImageResolution=140 \
+    -dMonoImageDownsampleType=/Bicubic \
+    -dMonoImageResolution=140 \
+    -sOutputFile=compressed_$1 \
+     $1
+}
+
+grey_pdf(){
+gs \
+ -sOutputFile=$1_gray.pdf \
+ -sDEVICE=pdfwrite \
+ -sColorConversionStrategy=Gray \
+ -dProcessColorModel=/DeviceGray \
+ -dCompatibilityLevel=1.4 \
+ -dNOPAUSE \
+ -dBATCH \
+ $1
+}
