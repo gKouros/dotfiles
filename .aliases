@@ -10,6 +10,8 @@ alias apt-search='sudo aptitude search'
 alias ~='cd ~'
 alias desk='cd ~/Desktop'
 alias down='cd ~/Downloads'
+alias downloads='cd ~/Downloads'
+alias storage='cd /media/gkouros/STORAGE2'
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
@@ -37,7 +39,9 @@ alias git-pull-all="ls | parallel git -C {} pull"
 # catkin workspace and ros
 alias ws="cd ~/catkin_ws"
 alias repos="cd ~/catkin_ws/src"
-alias ncrepos="cd ~/installers"
+alias installers="cd ~/installers"
+alias ncrepos="cd ~/non_catkin_ws"
+alias cv="cd ~/non_catkin_ws/cv-and-cl/cv"
 alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
 alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
