@@ -20,7 +20,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/fugitive.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-" Plugin 'taketwo/vim-ros'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'taketwo/vim-ros'
 Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mhinz/vim-startify'
@@ -28,6 +29,7 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'tmhedberg/SimpylFold'
 call vundle#end()
 " }}}
 " Colors and Themes {{{
@@ -102,6 +104,10 @@ set textwidth=0
 set formatoptions-=t
 set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list chars
 set backspace=indent,eol,start
+syntax on
+
+nnoremap <space> za
+vnoremap <space> zf
 
 highlight ExtraWhitespace ctermbg=red
 let g:better_whitespace_enabled=1
@@ -193,6 +199,7 @@ let NERDTreeShowBookmarks=1                                     " Show Bookmarks
 "}}}
 " YouCompleteMe {{{
 let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_python_binary_path = '/usr/bin/python2.7'
 let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
