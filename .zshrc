@@ -53,7 +53,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler zsh-autosuggestions zsh-history-substring-search)
+plugins=(git bundler zsh-autosuggestions zsh-history-substring-search docker docker-maching docker-compose)
 
 # enable syntax highligting only when opening new window to prevent crashing
 if [[ $ZSH_EVAL_CONTEXT == 'file' ]]; then
@@ -96,7 +96,19 @@ setopt nonomatch;
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
+# fix page up and page down via keypad
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[4~"   end-of-line
+
 # ros related
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
 if [ -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
 if [ -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export PATH="$PATH:/home/gkouros/anaconda3/bin"
+
+export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+export PATH="$PATH:$HOME/bin"
