@@ -1,7 +1,8 @@
 #!/bin/bash
 ZSH=~/.oh-my-zsh
 ZSH_CUSTOM=~/.oh-my-zsh/custom
-DPATH=`dirname "$0"`
+SCRIPT=$(readlink -f $0)
+DPATH=`dirname $SCRIPT`
 
 # install zsh
 sudo apt install zsh -y

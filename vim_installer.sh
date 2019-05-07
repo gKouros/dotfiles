@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DPATH=`dirname "$0"`
+SCRIPT=$(readlink -f $0)
+DPATH=`dirname $SCRIPT`
 
 # install vim and plugins
 sudo apt-get -y install vim exuberant-ctags build-essential cmake python{,3}-dev g++ grip xdotool

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SCRIPT=$(readlink -f $0)
+DPATH=`dirname $SCRIPT`
+
 # install ros
 sudo apt update && sudo apt -y upgrade
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
