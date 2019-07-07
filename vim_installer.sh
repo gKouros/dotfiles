@@ -1,7 +1,6 @@
 #!/bin/bash
 
-SCRIPT=$(readlink -f $0)
-DPATH=`dirname $SCRIPT`
+DPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # install vim and plugins
 sudo apt-get -y install vim exuberant-ctags build-essential cmake python{,3}-dev g++ grip xdotool
