@@ -1,7 +1,6 @@
 #!/bin/bash
 
-SCRIPT=$(readlink -f $0)
-DPATH=`dirname $SCRIPT`
+DPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # install ros
 sudo apt update && sudo apt -y upgrade
