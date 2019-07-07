@@ -1,8 +1,6 @@
 #!/bin/bash
 ZSH=~/.oh-my-zsh
 ZSH_CUSTOM=~/.oh-my-zsh/custom
-# SCRIPT=$(readlink -f $0)
-# DPATH=`dirname $SCRIPT`
 DPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # install zsh
