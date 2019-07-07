@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-DPATH=`dirname "$0"`
+DPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # link dotfiles
 ln -fs $DPATH/.bashrc ~/.bashrc
