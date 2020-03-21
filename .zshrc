@@ -53,11 +53,15 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler zsh-autosuggestions zsh-history-substring-search)
+plugins=(git bundler zsh-autosuggestions zsh-history-substring-search docker docker-compose)
 
 # enable syntax highligting only when opening new window to prevent crashing
 if [[ $ZSH_EVAL_CONTEXT == 'file' ]]; then
   source "$ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+if [ -f /etc/bash.command-not-found ]; then
+    . /etc/bash.command-not-found
 fi
 
 source $ZSH/oh-my-zsh.sh
