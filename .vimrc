@@ -32,9 +32,8 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
 Plugin 'vimjas/vim-python-pep8-indent'
 " Plugin 'vim-syntastic/syntastic'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim' " control-p to search for files
 Plugin 'Raimondi/delimitMate'
-Plugin 'jez/vim-superman'
 Plugin 'vim-python/python-syntax'
 Plugin 'dense-analysis/ale'
 call vundle#end()
