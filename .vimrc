@@ -10,6 +10,7 @@ Plugin 'vim-scripts/indentLine.vim'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'godlygeek/tabular'              " eg. select lines and do :Tabularize /=
 Plugin 'vim-scripts/taglist.vim'
@@ -19,15 +20,23 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/fugitive.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'nathanaelkane/vim-indent-guides'
 " Plugin 'taketwo/vim-ros'
 Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mhinz/vim-startify'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'nvie/vim-flake8'
+Plugin 'vimjas/vim-python-pep8-indent'
+" Plugin 'vim-syntastic/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'jez/vim-superman'
+Plugin 'vim-python/python-syntax'
+Plugin 'dense-analysis/ale'
 call vundle#end()
 " }}}
 " Colors and Themes {{{
@@ -36,7 +45,7 @@ colorscheme wombat256mod                                  " set vim color scheme
 syntax enable                                         " enable syntax processing
 " - highlight line number column
 highlight Comment ctermfg=66
-let &colorcolumn=81                                            " color column 81
+let &colorcolumn=80                                            " color column 81
 autocmd FileType c,cpp :set colorcolumn=121
 highlight colorcolumn ctermfg=red ctermbg=black
 " }}}
@@ -198,7 +207,6 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings  = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_key_list_select_completion=['<tab>', '<Down>']
 let g:ycm_key_list_previous_completion=['<s-tab>', '<Up>']
 let g:ycm_auto_trigger = 1
@@ -221,6 +229,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_check_header = 0
 let g:syntastic_c_check_header = 0
 let g:syntastic_cpp_remove_include_errors = 0
+let g:syntastic_python_checkers = ['pylint']
 highlight SyntasticErrorSign guifg=white guibg=red
 " }}}
 " clang-formater SETTINGS {{{
