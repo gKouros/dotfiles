@@ -11,7 +11,8 @@ else
 fi
 
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
+local current_dir='%{$terminfo[bold]$fg[blue]%}%50<..<%~%<<%{$reset_color%}'
+# local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 local git_branch='$(git_super_status)%{$reset_color%}'
 
 local rvm_ruby=''
