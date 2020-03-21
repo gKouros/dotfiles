@@ -25,12 +25,15 @@ alias ll="ls -lah"
 alias grep='grep --color=auto'
 alias nh='nautilus'
 alias clearswap='sudo swapoff -a && sudo swapon -a'
+alias fix-graphics="dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval 'string:global.reexec_self()'"
+alias clip="xclip -selection clipboard"
+alias jn="jupyter-notebook"
 
-# compiler related
+# compiler
 alias switch-c-compiler='sudo update-alternatives --config cc'
 alias switch-cpp-compiler='sudo update-alternatives --config c++'
 
-# git related
+# git
 alias gits="git status"
 alias git-pull-all="ls | parallel git -C {} pull"
 
@@ -38,35 +41,29 @@ alias git-pull-all="ls | parallel git -C {} pull"
 alias ws="cd ~/catkin_ws"
 alias repos="cd ~/catkin_ws/src"
 alias ncrepos="cd ~/installers"
-alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
-alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
 alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-alias ros2="source ~/.ros2_setup.zsh"
 
 # tar/untar aliases
-alias tar-gz='tar czf'
-alias tar-bz2='tar cjf'
-alias untar-gz='tar xzf'
-alias untar-bz2='tar xjf'
+alias tar='tar czf'
+alias untar='tar xzf'
 
 # copy public key to remote machine eg. keyto example@example-ip
 alias keyto='ssh-copy-id'
 
 # Converting aliases
-ogv2mp4() {
-  ffmpeg -i $1 \
-    -c:v libx264 -preset veryslow -crf 22 \
-    -c:a libmp3lame -qscale:a 2 -ac 2 -ar 44100 \
-    ${1%.*}.mp4
-}
+ogv2mp4() { ffmpeg -i $1 -c:v libx264 -preset veryslow -crf 22 -c:a libmp3lame -qscale:a 2 -ac 2 -ar 44100 ${1%.*}.mp4 }
 
+avi2mp4() { ffmpeg -i $1 -2 -profile:v baseline -movflags +faststart -pix_fmt yuv420p $1.mp4 }
 
-# docker related
-# alias zed="nvidia-docker run -it --privileged stereolabs/zed:ubuntu1804-cuda10.0-zed2.7"
-#
-alias cmake_cv="cmake -D CMAKE_BUILD_TYPE=RELEASE \
+# docker
+alias docker-clean="docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi"
+alias docker-container-rm-all="docker rm $(docker ps -a -q)"
+docker-export() { docker save --output $1.tar $1}
+
+# cmake
+alias cmake_cv="cmake .. -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
     -D WITH_CUDA=ON \
     -D ENABLE_FAST_MATH=1 \
@@ -76,5 +73,5 @@ alias cmake_cv="cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
     -D BUILD_EXAMPLES=ON .. \
     -DBUILD_opencv_cudacodec=OFF \
-    -DWITH_NVCUVID=OFF" \
-    -DWITH_NONFREE=ON
+    -DWITH_NVCUVID=OFF \
+    -DOPENCV_ENABLE_NONFREE=ON"
