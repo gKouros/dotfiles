@@ -11,6 +11,14 @@ alias ~='cd ~'
 alias desk='cd ~/Desktop'
 alias down='cd ~/Downloads'
 
+# linux remappings
+alias su="su -l"
+alias ll="ls -lah"
+alias grep='grep --color=auto'
+alias sudo='sudo '  # makes aliases work on root
+
+
+
 # linux usefull aliases
 alias sb="source ~/.bashrc"
 alias sz="source ~/.zshrc"
@@ -21,8 +29,6 @@ alias local_ip="$(hostname -I)"
 alias delnewline="rename 's/\n/ /g' *" # delete new line char from filenames
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ll="ls -lah"
-alias grep='grep --color=auto'
 alias nh='nautilus'
 alias clearswap='sudo swapoff -a && sudo swapon -a'
 alias fix-graphics="dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval 'string:global.reexec_self()'"
