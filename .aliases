@@ -25,7 +25,7 @@ alias sz="source ~/.zshrc"
 alias set-zsh="chsh -s $(which zsh)"
 alias set-bash="chsh -s $(which bash)"
 alias public_ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias local_ip="$(hostname -I)"
+alias local_ip="hostname -i | cut -f1 -d' '"
 alias delnewline="rename 's/\n/ /g' *" # delete new line char from filenames
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
@@ -64,9 +64,9 @@ ogv2mp4() { ffmpeg -i $1 -c:v libx264 -preset veryslow -crf 22 -c:a libmp3lame -
 avi2mp4() { ffmpeg -i $1 -2 -profile:v baseline -movflags +faststart -pix_fmt yuv420p $1.mp4 }
 
 # docker
-alias docker-clean="docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi"
-alias docker-container-rm-all="docker rm $(docker ps -a -q)"
-docker-export() { docker save --output $1.tar $1}
+#alias docker-clean="docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi"
+#alias docker-container-rm-all="docker rm $(docker ps -a -q)"
+#docker-export() { docker save --output $1.tar $1}
 
 # cmake
 alias cmake_cv="cmake .. -D CMAKE_BUILD_TYPE=RELEASE \
