@@ -163,3 +163,8 @@ $ pacman -S \
   terminator \
   ...
 ```
+22. Enable and start ssh service
+```shell
+$ systemctl enable sshd.service
+$ systemctl start sshd.service
+```
