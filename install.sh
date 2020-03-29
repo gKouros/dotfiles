@@ -11,4 +11,13 @@ ln -fs $dpath/.gitconfig ~/.gitconfig
 ln -fs $dpath/.gitignore_global ~/.gitignore_global
 
 # install zsh
-sh $dpath/zsh_installer.sh
+sh $dpath/install_zsh.sh
+
+# install vim
+sh $dpath/install_vim.sh
+
+# install ros
+#sh $dpath/install_ros.sh
+
+# install ros2
+#sh $dpath/install_ros2.sh
