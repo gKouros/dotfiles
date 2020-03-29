@@ -1,6 +1,0 @@
-htop
-terminator
-{gnome,unity}-tweak-tool
-gitk
-gitg
-cmake
