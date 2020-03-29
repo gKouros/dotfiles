@@ -10,6 +10,9 @@ sudo pacman -S --noconfirm git
 ln -fs $dpath/.gitconfig ~/.gitconfig
 ln -fs $dpath/.gitignore_global ~/.gitignore_global
 
+# install required packages
+sudo pacman -S python{,2}{,-pip} python{,2}-virtualenv
+
 # install zsh
 sh $dpath/install_zsh.sh
 
