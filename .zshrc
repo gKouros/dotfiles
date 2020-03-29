@@ -101,6 +101,6 @@ setopt nonomatch;
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # ros related
-export ROS_IP=$(hostname -I | cut -f1 -d' ')
+export ROS_IP=$(hostname -i | cut -f1 -d' ')
 if [ -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
 if [ -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi
