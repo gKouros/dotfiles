@@ -12,20 +12,12 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -97,24 +89,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
-
 # bash functions
 if [ -f ~/.bash_scripts ]; then
     . ~/.bash_scripts
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
 fi
 
 ## Git highlighting script ##
@@ -139,11 +116,11 @@ function proml {
   local  LIGHT_GRAY="\[\033[0;37m\]"
   local     DEFAULT="\[\033[0m\]"
 
-  PS1="$LIGHT_CYAN\u$LIGHT_RED@$LIGHT_MAGENTA\h$LIGHT_YELLOW:$LIGHT_BLUE[\w$LIGHT_RED\$(__git_ps1)$LIGHT_BLUE]\n$LIGHT_YELLOW>>> $DEFAULT"
+  PS1="$LIGHT_CYAN\u$LIGHT_RED@$LIGHT_MAGENTA\h$LIGHT_YELLOW:$LIGHT_BLUE[\w$LIGHT_RED$LIGHT_BLUE]\n$LIGHT_YELLOW>>> $DEFAULT"
 }
 proml
 
 # ros related
-export ROS_IP=$(hostname -I | cut -f1 -d' ')
+export ROS_IP=$(hostname -i | cut -f1 -d' ')
 if [ -f /opt/ros/melodic/setup.bash ]; then source /opt/ros/melodic/setup.bash; fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then source ~/catkin_ws/devel/setup.bash; fi
