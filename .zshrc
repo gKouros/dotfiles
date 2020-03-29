@@ -1,3 +1,5 @@
+# Fix permissions warnings when using oh-my-zsh from root
+ZSH_DISABLE_COMPFIX=true
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -90,10 +92,8 @@ export LANG=en_US.UTF-8
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-source ~/.aliases
-# source ~/.experiment_aliases
-# source ~/.misc_aliases
-source ~/.bash_scripts
+if [ -f ~/.aliases ]; then source ~/.aliases; fi
+if [ -f ~/.bash_scripts ]; then source ~/.bash_scripts; fi
 
 # enable wildcards
 setopt nonomatch;
