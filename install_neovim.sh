@@ -2,8 +2,9 @@
 
 sudo pacman -S --noconfirm neovim python-neovim python{,2} xdotool uncrustify \
 pip2 install --user neovim pynvim
-pip install --user neovim pynvim grip msgpack jedi \
+pip install --user neovim pynvim grip jedi \
     yapf cmake-format remark pyaml flake8 pylint
+pip install --user 'msgpack>=1.0.0'
 mkdir -p $HOME/.config/nvim
 ln -s $(pwd)/init.vim $HOME/.config/nvim/init.vim
 
