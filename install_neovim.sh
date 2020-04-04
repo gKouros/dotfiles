@@ -1,13 +1,14 @@
 #!/bin/bash
 
-sudo pacman -S --noconfirm neovim python-neovim python{,2}
+sudo pacman -S --noconfirm neovim python-neovim python{,2} xdotool uncrustify \
 pip2 install --user neovim pynvim
-pip3 install --user neovim pynvim
+pip install --user neovim pynvim grip msgpack jedi \
+    yapf cmake-format remark pyaml flake8 pylint
 mkdir -p $HOME/.config/nvim
 ln -s $(pwd)/init.vim $HOME/.config/nvim/init.vim
 
 # install yaourt for installation of community packages
-yaourt -S neovim-symlinks neovim-drop-in # unavoidable prompt
+yaourt -S neovim-symlinks neovim-drop-in universal-ctags
 
 # install a plugin manager
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
