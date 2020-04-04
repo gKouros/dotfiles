@@ -98,6 +98,9 @@ if [ -f ~/.bash_scripts ]; then source ~/.bash_scripts; fi
 # enable wildcards
 setopt nonomatch;
 
+# set display to enable clipboard in vim
+export DISPLAY=:0
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # ros related
