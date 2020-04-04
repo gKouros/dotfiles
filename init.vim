@@ -29,6 +29,7 @@ call plug#end()
 set nocompatible                         " disable compatibility to old-time vi
 set foldmethod=syntax                                     " selects fold method
 set showmatch                                         " show matching brackets.
+set cursorline                                         " highlight current line
 set ignorecase                                      " case insensitive matching
 " set mouse=v                                   " middle-click paste with mouse
 set mouse=a                              " mouse selection without line numbers
@@ -42,9 +43,13 @@ set number                                                   " add line numbers
 set wildmode=longest,list                       " get bash-like tab completions
 set cc=80                       " set an 80 column border for good coding style
 set clipboard+=unnamedplus                        " enable copying to clipboard
+" set clipboard=unnamed                        " enable copying to clipboard
 filetype plugin indent on        " allows auto-indenting depending on file type
 syntax on                                                 " syntax highlighting
 colorscheme default
+filetype indent on                        " load filetype-specific indent files
+filetype plugin on                                    " enable filetype plugins
+
 let g:mapleader=','                                        " set the leader key
 let g:maplocalleader="\\"                            " set the local leader key
 " }}}
@@ -192,12 +197,10 @@ nnoremap <leader>w :set wrap!<CR>
 nnoremap <leader>t <ESC>:TagbarToggle<CR>
 " Turn off search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
-"" copy from clipboard
-"nnoremap <leader>y "*y
-" paste from clipboard
-"nnoremap <leader>p "*p
 " close autocompletion window
 nnoremap <leader>x :pclose<CR>
+
+" commenting in and out with nerdcommenter
 map - <leader>cc
 map + <leader>cu
 map 0 <leader>ci
