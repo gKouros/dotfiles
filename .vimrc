@@ -5,7 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/a.vim'
-Plugin 'universal-ctags/ctags'
 Plugin 'vim-scripts/indentLine.vim'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -32,11 +31,45 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
 Plugin 'vimjas/vim-python-pep8-indent'
 " Plugin 'vim-syntastic/syntastic'
-" Plugin 'kien/ctrlp.vim' " control-p to search for files
+Plugin 'kien/ctrlp.vim' " control-p to search for files
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-python/python-syntax'
-Plugin 'dense-analysis/ale'
+" Plugin 'dense-analysis/ale'
 call vundle#end()
+" }}}
+" UI Config {{{
+set shell=/bin/bash
+set encoding=utf-8
+set number                                                   " show line numbers
+set showcmd                                         " show command in bottom bar
+set cursorline                                          " highlight current line
+filetype indent on                         " load filetype-specific indent files
+filetype plugin on                                     " enable filetype plugins
+set wildmenu                              " visual autocomplete for command menu
+set lazyredraw                                     " redraw only when we need to
+set showmatch                                        " highlight matching [{()}]
+
+set ignorecase                                          " ignore case by default
+set smartcase                 " ignore case at search, unless camel case is used
+set clipboard=unnamed         " use the system clipboard for for yank/put/delete
+set laststatus=2                                      " always show status lines
+set ruler                                                   " show column number
+set mouse=a                                           " enable mouse in terminal
+set textwidth=0
+set formatoptions-=t
+set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list chars
+set backspace=indent,eol,start
+let g:mapleader=','                                        " set the leader key
+
+highlight ExtraWhitespace ctermbg=red
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:better_whitespace_filetypes_blacklist=['markdown', 'md', 'diff', 'gitcommit', 'unite', 'qf', 'help']
+
+" - indent lines and leading spaces
+let g:indentLine_color_term=239
+let g:indentLine_enabled=1
+let g:indentLine_leadingSpaceEnabled=1
 " }}}
 " Colors and Themes {{{
 set t_Co=256
@@ -88,38 +121,6 @@ set smartindent                            " automatic indentation in some cases
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=40
 let Tlist_GainFocus_On_ToggleOpen=1
-" }}}
-" UI Config {{{
-set shell=/bin/bash
-set encoding=utf-8
-set number                                                   " show line numbers
-set showcmd                                         " show command in bottom bar
-set cursorline                                          " highlight current line
-filetype indent on                         " load filetype-specific indent files
-filetype plugin on                                     " enable filetype plugins
-set wildmenu                              " visual autocomplete for command menu
-set lazyredraw                                     " redraw only when we need to
-set showmatch                                        " highlight matching [{()}]
-set ignorecase                                          " ignore case by default
-set smartcase                 " ignore case at search, unless camel case is used
-set clipboard=unnamed         " use the system clipboard for for yank/put/delete
-set laststatus=2                                      " always show status lines
-set ruler                                                   " show column number
-set mouse=v                                           " enable mouse in terminal
-set textwidth=0
-set formatoptions-=t
-set listchars=eol:¬,tab:\|\ ,trail:~,extends:>,precedes:<       " set list chars
-set backspace=indent,eol,start
-
-highlight ExtraWhitespace ctermbg=red
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-let g:better_whitespace_filetypes_blacklist=['markdown', 'md', 'diff', 'gitcommit', 'unite', 'qf', 'help']
-
-" - indent lines and leading spaces
-let g:indentLine_color_term=239
-let g:indentLine_enabled=1
-let g:indentLine_leadingSpaceEnabled=1
 " }}}
 " Spellchecking {{{
 set spelllang=en
@@ -285,11 +286,6 @@ nnoremap <buffer> <F9> :exec '!python -B' shellescape(@%, 1)<cr>
 
 " }}}
 " Custom Movements {{{
-" - move to beginning/end of line
-nmap <C-j> <C-W>j
-nmap <C-h> <C-W>h
-nmap <C-k> <C-W>k
-nmap <C-l> <C-W>l
 " - don't jump wrapped lines
 nnoremap j gj
 nnoremap k gk
