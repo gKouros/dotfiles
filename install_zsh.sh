@@ -20,5 +20,7 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git $ZSH_CUS
 
 ln -sf $dpath/.zshrc ~/.zshrc
 ln -sf $dpath/my.zsh-theme $ZSH/themes/my_zsh_theme.zsh-theme
+ln -s $HOME/.oh-my-zsh /root/.oh-my-zsh
+ln -s $HOME/.zshrc /root/.zshrc
 
 sudo chsh -s /bin/zsh $USER
