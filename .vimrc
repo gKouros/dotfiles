@@ -6,15 +6,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/indentLine.vim'
-Plugin 'vim-scripts/mru.vim'
+" Plugin 'vim-scripts/mru.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'godlygeek/tabular'              " eg. select lines and do :Tabularize /=
+" Plugin 'godlygeek/tabular'              " eg. select lines and do :Tabularize /=
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/UltiSnips'           " custom autocompletion eg. if, for etc
-Plugin 'honza/vim-snippets'
+" Plugin 'vim-scripts/UltiSnips'           " custom autocompletion eg. if, for etc
+" Plugin 'honza/vim-snippets'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -22,7 +22,7 @@ Plugin 'vim-scripts/fugitive.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'nathanaelkane/vim-indent-guides'
 " Plugin 'taketwo/vim-ros'
-Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'mhinz/vim-startify'
 Plugin 'JamshedVesuna/vim-markdown-preview'
@@ -30,11 +30,15 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
 Plugin 'vimjas/vim-python-pep8-indent'
-" Plugin 'vim-syntastic/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'kien/ctrlp.vim' " control-p to search for files
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-python/python-syntax'
+" Plugin 'xolox/vim-easytags'
+" Plugin 'xolox/vim-misc'
 " Plugin 'dense-analysis/ale'
+" Plugin 'neoclide/coc.nvim'
+Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
 " }}}
 " UI Config {{{
@@ -70,43 +74,28 @@ let g:better_whitespace_filetypes_blacklist=['markdown', 'md', 'diff', 'gitcommi
 let g:indentLine_color_term=239
 let g:indentLine_enabled=1
 let g:indentLine_leadingSpaceEnabled=1
+
+" - Python syntax
+let g:python_highlight_all=1
 " }}}
 " Colors and Themes {{{
 set t_Co=256
-colorscheme wombat256mod                                  " set vim color scheme
+set background=dark
+colorscheme PaperColor
+" colorscheme wombat256mod                                  " set vim color scheme
 syntax enable                                         " enable syntax processing
 " - highlight line number column
 highlight Comment ctermfg=66
 let &colorcolumn=80                                            " color column 81
 autocmd FileType c,cpp :set colorcolumn=121
 highlight colorcolumn ctermfg=red ctermbg=black
-" }}}
-" rainbow parenthesis {{{
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-" execute :RainbowParenthesesActivate to display the rainbow
+
+" Highlight TODO
+augroup myTodo
+  autocmd!
+  autocmd Syntax * syntax match myTodo /\v\_.<(TODO|FIXME).*/hs=s+1 containedin=.*Comment
+augroup END
+highlight link myTodo Todo
 " }}}
 " Spaces and Tabs {{{
 set tabstop=2                                  " number of visual spaces per TAB
@@ -171,12 +160,12 @@ function! ToggleNumber()
 endfunc
 " }}}
 " Ultisnips {{{
-let g:UltiSnipsSnippetsDirectories=["UltiSnipps", "my_snippets"]
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:Ultisnips_python_style="doxygen"
-let g:UltiSnipsListSnippets="<c-b>"
+" let g:UltiSnipsSnippetsDirectories=["UltiSnipps", "my_snippets"]
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" let g:Ultisnips_python_style="doxygen"
+" let g:UltiSnipsListSnippets="<c-b>"
 "}}}
 " Statusline {{{
 let g:airline_powerline_fonts=1
@@ -222,7 +211,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 3
+let g:syntastic_loc_list_height = 5
 let b:syntastic_mode = "passive"
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
@@ -259,6 +248,36 @@ let g:startify_list_order = [
       \ 'files',
       \ ]
 " }}}
+" rainbow parenthesis {{{
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesActivate
+" }}}
+" Easytags{{{
+let g:easytags_events = ['BufWritePost', 'BufReadPost', 'CursorHold', 'CursorHoldI']
+" }}}
 " Custom bindings {{{
 " - replace character and exit insert mode
 nnoremap <C-I> s <ESC>r
@@ -269,7 +288,7 @@ nnoremap <leader>ev :vsp $MYVIMRC<CR>
 " - source vimrc binding
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " - toggle rainbow parentheses
-nnoremap <leader>r :RainbowParenthesesToggle<CR>
+" nnoremap <leader>r :RainbowParenthesesToggle<CR>
 " - toggle nerdtree
 nnoremap <leader>n :NERDTreeToggle<CR>
 " - toggle line wrapping
@@ -320,6 +339,7 @@ nnoremap <c-k> <c-w>k"
 " inoremap <A-j> <C-o> j
 " inoremap <A-k> <C-o> k
 " inoremap <A-l> <C-o> l
+"
 "}}}
 " Organization {{{
 set modeline

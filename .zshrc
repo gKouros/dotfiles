@@ -100,7 +100,27 @@ setopt nonomatch;
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
+# cuda
+export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.1${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
 # ros related
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
-if [ -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
-if [ -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi
+if [ -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh --extend; fi
+if [ -f ~/umicore_ws/devel/setup.zsh ]; then source ~/umicore_ws/devel/setup.zsh --extend; fi
+# if [ -f ~/umicore_ws/install/setup.zsh ]; then source ~/umicore_ws/install/setup.zsh --extend; fi
+# if [ -f ~/cv_bridge_ws/install/setup.zsh ]; then source ~/cv_bridge_ws/install/setup.zsh --extend; fi
+# if [ -f ~/bekaert_ws/devel/setup.zsh ]; then source ~/bekaert_ws/devel/setup.zsh --extend; fi
+# if [ -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh --extend; fi
+
+# ros2 related
+# export RMW_IMPLEMENTATION=rmw_connext_cpp
+# source /opt/ros/dashing/setup.zsh #local_setup.zsh
+# source /opt/ros/dashing/share/ros2cli/environment/ros2-argcomplete.zsh
+# export Y_ASSETS=~/kipp/y_assets
+# source ~/kipp/install/setup.zsh
+
+export PYTHONDONTWRITEBYTECODE=true
+
+# export MASK_RCNN_ROOT_DIR="/home/gkouros/umicore_ws/src/Mask_RCNN"
+# [[ :$PYTHONPATH: != *:$MASK_RCNN_ROOT_DIR:* ]] && PYTHONPATH=$PYTHONPATH:$MASK_RCNN_ROOT_DIR

@@ -1,3 +1,23 @@
+# ssh
+alias vpn="sudo openvpn --config ~/.ssh/openvpn_george.ovpn"
+alias gpu="ssh -A gkouros@192.168.144.40"
+alias jnfw="ssh  -N -f -L localhost:8888:localhost:8888 gkouros@192.168.144.40"
+alias hs2="ssh george@hs2.kapernikov.com"
+alias umi="ssh -AX kpv@192.168.1.30"
+alias umi2="ssh -AX kpv@10.62.243.5"
+alias umi-srv="journalctl -f -u smelter-monitoring"
+alias raph="ssh -A george@10.8.0.34"
+alias raphumi="ssh -A -t george@10.8.0.34 ssh -A kpv@192.168.1.30"
+alias pieter="ssh -A george@10.8.0.26"
+alias pieterumi="ssh -A -t george@10.8.0.26 ssh -A kpv@192.168.1.30"
+
+# Umicore
+alias umi-git-daemon="git daemon --base-path=/home/gkouros/umicore_ws/src/ --export-all --reuseaddr --enable=receive-pack --informative-errors --verbose"
+alias urepos="cd ~/umicore_ws/src"
+alias monitor="cd ~/umicore_ws/src/smelter-monitoring"
+alias datasets="cd ~/umicore_ws/src/smelter-datasets-and-models"
+alias notebooks="cd ~/umicore_ws/src/smelter-notebooks"
+
 # package management
 alias install='sudo apt install'
 alias remove='sudo apt remove'
@@ -10,14 +30,13 @@ alias apt-search='sudo aptitude search'
 alias ~='cd ~'
 alias desk='cd ~/Desktop'
 alias down='cd ~/Downloads'
+alias mooc='~/Documents/Personal/coursera-robotics-perception-mooc'
 
 # linux remappings
 alias su="su -l"
 alias ll="ls -lah"
 alias grep='grep --color=auto'
-alias sudo='sudo '  # makes aliases work on root
-
-
+# alias sudo='sudo '  # makes aliases work on root
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
@@ -34,6 +53,12 @@ alias clearswap='sudo swapoff -a && sudo swapon -a'
 alias fix-graphics="dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval 'string:global.reexec_self()'"
 alias clip="xclip -selection clipboard"
 alias jn="jupyter-notebook"
+alias py3cvb="python3 -c 'from cv_bridge.boost.cv_bridge_boost import getCvType'"
+alias py2cvb="python2 -c 'from cv_bridge.boost.cv_bridge_boost import getCvType'"
+alias octave-gui="flatpak run org.octave.Octave --gui"
+alias octave="flatpak run org.octave.Octave"
+alias toclip="xclip -sel c <"
+
 
 # compiler
 alias switch-c-compiler='sudo update-alternatives --config cc'
@@ -44,40 +69,113 @@ alias gits="git status"
 alias git-pull-all="ls | parallel git -C {} pull"
 
 # catkin workspace and ros
-alias ws="cd ~/catkin_ws"
+alias ws="cd ~/umicore_ws"
 alias repos="cd ~/catkin_ws/src"
+alias krepos="cd ~/kapernikov_ws/src"
+alias brepos="cd ~/bekaert_ws/src"
 alias ncrepos="cd ~/installers"
 alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
 alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
 alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-
-# tar/untar aliases
-alias tar='tar czf'
-alias untar='tar xzf'
+alias kipp="cd ~/virtual-world/ros2_ws"
+alias catkin_ignore="find . -type d -exec touch {}/CATKIN_IGNORE \;"
+alias catkin_unignore="find . -type d -exec rm {}/CATKIN_IGNORE \;"
+alias rosdep-install='rosdep install --from-paths src --ignore-src --rosdistro $ROS_DISTRO  -yr'
+alias reconf="rosrun rqt_reconfigure rqt_reconfigure"
+alias cbuild="catkin build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+alias sr2="source /opt/ros/crystal/setup.zsh && source ~/virtual-world/ros2_ws/install/local_setup.zsh && source /opt/ros/crystal/share/ros2cli/environment/ros2-argcomplete.zsh"
+alias gzkill="pkill -9 gzserver && pkill -9 gzclient && pkill -9 rosmaster && pkill -9 roslaunch && pkill -9 rosout"
+alias cattest="catkin run_tests && catkin_test_results --verbose"
+roslint () {
+  catkin build -v --no-deps $1 --make-args roslint_$1
+}
 
 # copy public key to remote machine eg. keyto example@example-ip
 alias keyto='ssh-copy-id'
 
 # Converting aliases
-ogv2mp4() { ffmpeg -i $1 -c:v libx264 -preset veryslow -crf 22 -c:a libmp3lame -qscale:a 2 -ac 2 -ar 44100 ${1%.*}.mp4 }
+ogv2mp4() {
+ffmpeg -i $1 -c:v libx264 -preset veryslow -crf 22 -c:a libmp3lame -qscale:a 2 -ac 2 -ar 44100 ${1%.*}.mp4
+}
 
-avi2mp4() { ffmpeg -i $1 -2 -profile:v baseline -movflags +faststart -pix_fmt yuv420p $1.mp4 }
+avi2mp4() {
+  ffmpeg -i $1 -2 -profile:v baseline -movflags +faststart -pix_fmt yuv420p $1.mp4
+}
 
 # docker
 alias docker-clean="docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi"
-alias docker-container-rm-all="docker rm $(docker ps -a -q)"
-docker-export() { docker save --output $1.tar $1}
+
+docker-rmc() {
+  docker rm $(docker ps -a -q)
+}
+
+docker-export() {
+  docker save --output $1.tar $1
+}
 
 # cmake
-alias cmake_cv="cmake .. -D CMAKE_BUILD_TYPE=RELEASE \
-    -D CMAKE_INSTALL_PREFIX=/usr/local \
-    -D WITH_CUDA=ON \
-    -D ENABLE_FAST_MATH=1 \
-    -D CUDA_FAST_MATH=1 \
-    -D WITH_CUBLAS=1 \
-    -D INSTALL_PYTHON_EXAMPLES=OFF \
-    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
-    -D BUILD_EXAMPLES=ON .. \
-    -DBUILD_opencv_cudacodec=OFF \
-    -DWITH_NVCUVID=OFF \
-    -DOPENCV_ENABLE_NONFREE=ON"
+cmake-cv-cuda() {
+  cmake .. \
+  -DCMAKE_BUILD_TYPE=RELEASE \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  -DWITH_CUDA=ON \
+  -DENABLE_FAST_MATH=1 \
+  -DCUDA_FAST_MATH=1 \
+  -DWITH_CUBLAS=1 \
+  -DINSTALL_PYTHON_EXAMPLES=OFF \
+  -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+  -DBUILD_EXAMPLES=ON .. \
+  -DBUILD_opencv_cudacodec=OFF \
+  -DWITH_NVCUVID=OFF \
+  -DOPENCV_ENABLE_NONFREE=ON
+}
+
+cmake-cv-gs() {
+  cmake .. \
+  -DCMAKE_BUILD_TYPE=RELEASE \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  -DWITH_CUDA=OFF \
+  -DINSTALL_C_EXAMPLES=OFF \
+  -DINSTALL_PYTHON_EXAMPLES=ON \
+  -DBUILD_opencv_python3=yes \
+  -DBUILD_EXAMPLES=ON \
+  -DPYTHON_EXECUTABLE=$(which python) \
+  -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+  -DPYTHON_LIBRARY=$(python -c "from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var('LIBPC')),get_config_var('LDLIBRARY')))") \
+  -DPYTHON_NUMPY_INCLUDE_DIRS=$(python -c "import numpy; print(numpy.get_include())") \
+  -DPYTHON_PACKAGES_PATH=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+  -DPYTHON3_EXECUTABLE=$(which python3) \
+  -DPYTHON3_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+  -DPYTHON3_LIBRARY=$(python3 -c "from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var('LIBPC')),get_config_var('LDLIBRARY')))") \
+  -DPYTHON3_NUMPY_INCLUDE_DIRS=$(python3 -c "import numpy; print(numpy.get_include())") \
+  -DPYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+}
+
+cmake-cv-cuda-gs() {
+  cmake .. \
+  -DCMAKE_BUILD_TYPE=RELEASE \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  -DWITH_CUDA=ON \
+  -DENABLE_FAST_MATH=1 \
+  -DCUDA_FAST_MATH=1 \
+  -DWITH_CUBLAS=1 \
+  -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+  -DBUILD_EXAMPLES=ON .. \
+  -DBUILD_opencv_cudacodec=OFF \
+  -DWITH_NVCUVID=OFF \
+  -DOPENCV_ENABLE_NONFREE=ON \
+  -DINSTALL_C_EXAMPLES=OFF \
+  -DINSTALL_PYTHON_EXAMPLES=ON \
+  -DBUILD_opencv_python3=yes \
+  -DBUILD_EXAMPLES=ON \
+  -DPYTHON_EXECUTABLE=$(which python) \
+  -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+  -DPYTHON_LIBRARY=$(python -c "from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var('LIBPC')),get_config_var('LDLIBRARY')))") \
+  -DPYTHON_NUMPY_INCLUDE_DIRS=$(python -c "import numpy; print(numpy.get_include())") \
+  -DPYTHON_PACKAGES_PATH=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+  -DPYTHON3_EXECUTABLE=$(which python3) \
+  -DPYTHON3_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+  -DPYTHON3_LIBRARY=$(python3 -c "from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var('LIBPC')),get_config_var('LDLIBRARY')))") \
+  -DPYTHON3_NUMPY_INCLUDE_DIRS=$(python3 -c "import numpy; print(numpy.get_include())") \
+  -DPYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+}
