@@ -1,6 +1,7 @@
 # Installation instruction for Arch Linux
 Credits for the information below goes to the [official arch linux installation page](https://wiki.archlinux.org/index.php/Installation_guide)
 
+## Image installation
 1. Download the [latest arch linux image](https://www.archlinux.org/download/)
 2. Verify the signature of the image
 ```shell
@@ -115,6 +116,8 @@ $ grub-mkconfig -o /boot/grub/grub.cfg
 16. Verify /etc/fstab
 - Use blkid to verify UUIDs of partitions
 - EFI partition must be of type vfat not ext4
+
+## Desktop environemnt and Essential Apps
 17. Install a graphical environment and graphics driver
 ```shell
 $ pacman -S xorg-server xorg-apps nvidia nvidia-settings xorg-xinit xorg-xinput
@@ -136,8 +139,9 @@ When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
-18. Install the kde-plasma / i3 / xfce4 desktop environments
+18. Install the i3 / xfce4 desktop environments
 ```shell
+$ pacman -S gnome gnome-extra
 $ pacman -S plasma-meta kde-applications-meta
 $ pacman -S i3-wm i3status
 $ pacman -S xfce4
@@ -168,3 +172,72 @@ $ pacman -S \
 $ systemctl enable sshd.service
 $ systemctl start sshd.service
 ```
+23. Install TLP for power management on battery mode
+```shell
+$ pacman -S tlp
+```
+24. Install a firewall
+```shell
+$ pacman -S ufw
+$ systemctl enable ufw
+$ systemctl start ufw
+$ ufw allow ssh
+```
+25. Setup fstrim to increased SSD operating life (runs weekly)
+```shell
+$ pacman -S util-linux
+$ systemctl enable fstrim.service
+```
+26. Add better fonts
+```shell
+$ pacman -S ttf-dejavu ttf-liberation noto-fonts
+$ sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+$ sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+$ sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+```
+Edit `/etc/profile.d/freetype2.sh` and uncomment the following line 
+  `# uncomment line # export FREETYPE_PROPERTIES="truetype:interpreter-version=40"`  
+Create the `/etc/fonts/local.conf file` and add the following
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+    <match>
+        <edit mode="prepend" name="family"><string>Noto Sans</string></edit>
+    </match>
+    <match target="pattern">
+        <test qual="any" name="family"><string>serif</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Serif</string></edit>
+    </match>
+    <match target="pattern">
+        <test qual="any" name="family"><string>sans-serif</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Sans</string></edit>
+    </match>
+    <match target="pattern">
+        <test qual="any" name="family"><string>monospace</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Mono</string></edit>
+    </match>
+</fontconfig>
+```
+## Install Yaourt and community packages
+```shell
+$ pacman -S --needed base-devel git wget yajl
+$ mkdir $HOME/repositories
+$ git clone https://aur.archlinux.org/package-query.git $HOME/repositories/package-query
+$ cd $HOME/repositories/package-query && makepkg -si --noconfirm
+$ git clone https://aur.archlinux.org/yaourt.git $HOME/repositories/yaourt
+$ cd $HOME/repositories/yaourt && makepkg -si --noconfirm
+```
+
+## Install a tiling window manager
+```shell
+$ pacman -S awesome xterm
+$ cp -r /etc/xdg/awesome ~/.config/
+```
+
+## Miscellaneous apps
+- dotfiles
+- thunderbird (pacman)
+- chrome (install from source)
+- spotify 
+- vlc
