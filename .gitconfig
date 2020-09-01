@@ -2,8 +2,8 @@
 	editor = vim
 	excludesfile = /home/gkouros/.gitignore_global
 [user]
-	email = george.kouros.ece@gmail.com
-	; email = george@kapernikov.com
+  email = george.kouros.ece@gmail.com
+  ; email = george@kapernikov.com
 	name = George Kouros
 [color]
   ui=auto
@@ -20,9 +20,10 @@
              | .metadata = {\"language_info\": {\"name\": \"python\", \"pygments_lexer\": \"ipython3\"}} \
              | .cells[].metadata = {} \
              '"
-
 [filter "lfs"]
+	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
+[lfs]
+	batch = false
