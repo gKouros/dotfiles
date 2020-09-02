@@ -101,6 +101,9 @@ setopt nonomatch;
 # set display to enable clipboard in vim
 export DISPLAY=:0
 
+# set vim as visual editor
+export VISUAL="vim"
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # ros related
