@@ -3,7 +3,6 @@
 	excludesfile = /home/gkouros/.gitignore_global
 [user]
 	email = george.kouros.ece@gmail.com
-	; email = george@kapernikov.com
 	name = George Kouros
 [color]
   ui=auto
