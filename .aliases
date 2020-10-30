@@ -12,6 +12,14 @@ alias desk='cd ~/Desktop'
 alias down='cd ~/Downloads'
 alias downloads='cd ~/Downloads'
 alias storage='cd /media/gkouros/STORAGE2'
+alias mai='cd ~/Documents/MAI'
+alias av='cd ~/Documents/MAI/Autonomous\ Vehicles'
+alias ga='cd ~/Documents/MAI/Genetic\ Algorithms\ and\ Evolutionary\ Computing'
+alias fai='cd ~/Documents/MAI/Fundamentals\ of\ Artificial\ Intelligence'
+alias uai='cd ~/Documents/MAI/Uncertainty\ in\ Artifiical\ Intelligence'
+alias cog='cd ~/Documents/MAI/Cognitive\ Science'
+alias ml='cd ~/Documents/MAI/Machine\ Learning\ and\ Inductive\ Inference'
+alias prolog='cd ~/Documents/MAI/Programming\ Languages\ and\ Programming\ Methodologies'
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
