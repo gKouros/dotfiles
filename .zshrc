@@ -10,6 +10,7 @@ export ZSH=~/.oh-my-zsh
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="bira"
 ZSH_THEME="my_zsh_theme"
+# ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -53,7 +54,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler zsh-autosuggestions zsh-history-substring-search docker docker-compose)
+plugins=(git bundler colored-man-pages zsh-autosuggestions zsh-history-substring-search docker docker-compose)
 
 # enable syntax highligting only when opening new window to prevent crashing
 if [[ $ZSH_EVAL_CONTEXT == 'file' ]]; then
@@ -87,8 +88,6 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 source ~/.aliases
-# source ~/.experiment_aliases
-# source ~/.misc_aliases
 source ~/.bash_scripts
 
 # enable wildcards
@@ -99,16 +98,13 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 # fix page up and page down via keypad
 bindkey  "^[[1~"   beginning-of-line
 bindkey  "^[[4~"   end-of-line
+# set fn + arrow keys for home, end, prior, next
+xmodmap -e "keycode 173 = Home"
+xmodmap -e "keycode 171 = End"
+xmodmap -e "keycode 174 = Prior"
+xmodmap -e "keycode 172 = Next"
 
 # ros related
 export ROS_IP=$(hostname -I | cut -f1 -d' ')
 if [ -f /opt/ros/melodic/setup.zsh ]; then source /opt/ros/melodic/setup.zsh; fi
 if [ -f ~/catkin_ws/devel/setup.zsh ]; then source ~/catkin_ws/devel/setup.zsh; fi
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export PATH="$PATH:/home/gkouros/anaconda3/bin"
-
-export PATH=/usr/local/cuda-9.2/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
-export PATH="$PATH:$HOME/bin"
