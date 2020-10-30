@@ -28,7 +28,7 @@ call plug#end()
 " UI {{{
 set nocompatible                         " disable compatibility to old-time vi
 set foldmethod=syntax                                     " selects fold method
-set showmatch                                         " show matching brackets.
+" set showmatch                                       " show matching brackets.
 set cursorline                                         " highlight current line
 set ignorecase                                      " case insensitive matching
 " set mouse=v                                   " middle-click paste with mouse
@@ -43,7 +43,7 @@ set number                                                   " add line numbers
 set wildmode=longest,list                       " get bash-like tab completions
 set cc=80                       " set an 80 column border for good coding style
 set clipboard+=unnamedplus                        " enable copying to clipboard
-" set clipboard=unnamed                        " enable copying to clipboard
+" set clipboard=unnamed                           " enable copying to clipboard
 filetype plugin indent on        " allows auto-indenting depending on file type
 syntax on                                                 " syntax highlighting
 colorscheme default
@@ -131,6 +131,9 @@ let g:ale_fixers = {
             \ 'python': ['autopep8','yapf'],
             \ 'c': ['uncrustify'], 'cpp': ['uncrustify']}
 let b:ale_warn_about_trailing_whitespace = 0
+highlight ALEWarning ctermbg=DarkRed
+highlight ALEWarning ctermfg=LightYellow
+highlight ALEError ctermfg=LightYellow
 " }}}
 " Indent Guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
