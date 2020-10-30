@@ -9,7 +9,7 @@ mkdir -p $HOME/.config/nvim
 ln -s $(pwd)/init.vim $HOME/.config/nvim/init.vim
 
 # install yaourt for installation of community packages
-yaourt -S neovim-symlinks neovim-drop-in universal-ctags
+sudo apt install neovim-symlinks neovim-drop-in universal-ctags
 
 # install a plugin manager
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
