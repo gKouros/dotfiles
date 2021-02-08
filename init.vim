@@ -14,6 +14,7 @@ Plug 'kien/rainbow_parentheses.vim'  " Matching coloring of parentheses, braces
 Plug 'majutsushi/tagbar'                            " Displays tags in a window
 Plug 'mhinz/vim-startify'                          " Fancy start screen for vim
 Plug 'nathanaelkane/vim-indent-guides'        " visually displays indent levels
+Plug 'vim-scripts/indentpython.vim'                           " autoindentation
 Plug 'ntpeters/vim-better-whitespace'             " Removes trailing whitespace
 Plug 'preservim/nerdcommenter'              " Intensely nerdy commenting powers
 Plug 'sbdchd/neoformat'             " auto format code - requires yapf from pip
@@ -23,6 +24,7 @@ Plug 'vim-airline/vim-airline'                              " Fancy status line
 Plug 'vim-airline/vim-airline-themes'            " Themes for fancy status line
 Plug 'vim-scripts/a.vim'              " Alternate Files quickly (.c --> .h etc)
 Plug 'zchee/deoplete-jedi'                         " deoplete source for python
+" Plug 'rafi/awesome-vim-colorschemes'                " awesome Vim Color Schemes
 call plug#end()
 " }}}
 " UI {{{
@@ -38,14 +40,15 @@ set tabstop=4                   " number of columns occupied by a tab character
 set softtabstop=4                             " see multiple spaces as tabstops
 set expandtab                                    " converts tabs to white space
 set shiftwidth=4                                        " width for autoindents
+set modeline                               " tabs are always expanded to spaces
 set autoindent       " indent a new line the same amount as the line just typed
 set number                                                   " add line numbers
 set wildmode=longest,list                       " get bash-like tab completions
 set cc=80                       " set an 80 column border for good coding style
 set clipboard+=unnamedplus                        " enable copying to clipboard
 " set clipboard=unnamed                           " enable copying to clipboard
-filetype plugin indent on        " allows auto-indenting depending on file type
 syntax on                                                 " syntax highlighting
+filetype indent plugin on        " allows auto-indenting depending on file type
 colorscheme default
 filetype indent on                        " load filetype-specific indent files
 filetype plugin on                                    " enable filetype plugins
@@ -137,6 +140,8 @@ highlight ALEError ctermfg=LightYellow
 " }}}
 " Indent Guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
 " }}}
 " Rainbow Parentheses {{{
 let g:rbpt_max = 16
