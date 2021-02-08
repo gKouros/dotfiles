@@ -1,3 +1,9 @@
+# course related
+alias mai='cd ~/Documents/MAI'
+alias thesis='cd ~/Documents/MAI/Thesis'
+alias trepos='cd ~/Documents/MAI/Thesis/repos'
+
+
 # package management
 alias install='sudo apt install'
 alias remove='sudo apt remove'
@@ -12,14 +18,6 @@ alias desk='cd ~/Desktop'
 alias down='cd ~/Downloads'
 alias downloads='cd ~/Downloads'
 alias storage='cd /media/gkouros/STORAGE2'
-alias mai='cd ~/Documents/MAI'
-alias av='cd ~/Documents/MAI/Autonomous\ Vehicles'
-alias ga='cd ~/Documents/MAI/Genetic\ Algorithms\ and\ Evolutionary\ Computing'
-alias fai='cd ~/Documents/MAI/Fundamentals\ of\ Artificial\ Intelligence'
-alias uai='cd ~/Documents/MAI/Uncertainty\ in\ Artifiical\ Intelligence'
-alias cog='cd ~/Documents/MAI/Cognitive\ Science'
-alias ml='cd ~/Documents/MAI/Machine\ Learning\ and\ Inductive\ Inference'
-alias prolog='cd ~/Documents/MAI/Programming\ Languages\ and\ Programming\ Methodologies'
 
 # linux usefull aliases
 alias sb="source ~/.bashrc"
@@ -35,6 +33,7 @@ alias ll="ls -lah"
 alias grep='grep --color=auto'
 alias nh='nautilus'
 alias clearswap='sudo swapoff -a && sudo swapon -a'
+alias jn='jupyter-notebook'
 
 # compiler related
 alias switch-c-compiler='sudo update-alternatives --config cc'
@@ -72,6 +71,9 @@ ogv2mp4() {
     -c:v libx264 -preset veryslow -crf 22 \
     -c:a libmp3lame -qscale:a 2 -ac 2 -ar 44100 \
     ${1%.*}.mp4
+}
+jn2pdf() {
+    jupyter nbconvert --execute --to pdf $1
 }
 
 
